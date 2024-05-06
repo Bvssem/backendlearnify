@@ -33,7 +33,7 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 
 
     @Query
-    ("SELECT COUNT(c) FROM Course c WHERE c.instructor.id = :instructorId")
+    ("SELECT COUNT(c) FROM CourseRepository c WHERE c.instructor.id = :instructorId")
     int countByInstructorId(@Param("instructorId") Long instructorId);
 
     int countby(Long id);

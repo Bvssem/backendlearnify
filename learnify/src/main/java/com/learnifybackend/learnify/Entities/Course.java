@@ -8,39 +8,41 @@ import java.util.List;
 @Entity
 
 @Table(name = "courses")
+
 public class Course {
 
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    private String status;
-
-    public Course(String status, String title, String price, String slug, String aboutCourse, int maximumStudents, String difficultyLevel, boolean isPublicCourse, boolean enableQA, String categories, byte[] courseThumbnail, String introVideoPath, List<String> topics, Date startDate, String language, String requirements, String description, int totalCourseDurationHours, int totalCourseDurationMinutes, String courseTags, String targetedAudience) {
-        this.status = status;
+    public Course(String status, String title, String price, String slug, String aboutCourse, int maximumStudents, String difficultyLevel, boolean isPublicCourse, boolean enableQA, String categories, byte[] courseThumbnail, String introVideoPath, List<String> topics, Date startDate, String language, String requirements, String description, int totalCourseDurationHours, int totalCourseDurationMinutes, String courseTags, String targetedAudience, Instructor instructor, byte[] certificateTemplate) {
         this.title = title;
         this.price = price;
         // Course Setting
         // Choose Categories
         this.courseThumbnail = courseThumbnail;
-        this.introVideoPath = introVideoPath;
+        // Course Intro Video
+        // Store local video path or video URL
         this.topics = topics;
         // Additional Information
-        this.description = description;
-        this.totalCourseDurationMinutes = totalCourseDurationMinutes;
-        this.courseTags = courseTags;
-        this.targetedAudience = targetedAudience;
+        this.instructor = instructor;
+        this.certificateTemplate = certificateTemplate;
     }
 
-    public Course ( String title, String price) {
+    public Course (Instructor instructor, String title, String price, byte[] certificateTemplate) {
+        this.instructor = instructor;
 
         this.title = title;
         this.price = price;
+        this.certificateTemplate = certificateTemplate;
+    }
+
+    public Course(Instructor instructor, byte[] certificateTemplate) {
+
+        this.instructor = instructor;
+        this.certificateTemplate = certificateTemplate;
+    }
+
+    public Course(byte[] certificateTemplate) {
+
+        this.certificateTemplate = certificateTemplate;
     }
 
     public Course() {
@@ -77,21 +79,10 @@ public class Course {
     @Column(name = "course_thumbnail")
     private byte[] courseThumbnail;
 
-    // Course Intro Video
-    private String introVideoPath; // Store local video path or video URL
-
     // Course Builder - Topic
     @ElementCollection
     @CollectionTable(name = "course_topics", joinColumns = @JoinColumn(name = "course_id"))
     private List<String> topics;
-
-    private String description;
-
-    private int totalCourseDurationMinutes;
-
-    private String courseTags;
-
-    private String targetedAudience;
 
     // Certificate Template
     @Lob
