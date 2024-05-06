@@ -16,8 +16,10 @@ public class Course {
 
     private String status;
 
-    public Course(String status, String slug, String aboutCourse, int maximumStudents, String difficultyLevel, boolean isPublicCourse, boolean enableQA, String categories, byte[] courseThumbnail, String introVideoPath, List<String> topics, Date startDate, String language, String requirements, String description, int totalCourseDurationHours, int totalCourseDurationMinutes, String courseTags, String targetedAudience) {
+    public Course(String status, String title, String price, String slug, String aboutCourse, int maximumStudents, String difficultyLevel, boolean isPublicCourse, boolean enableQA, String categories, byte[] courseThumbnail, String introVideoPath, List<String> topics, Date startDate, String language, String requirements, String description, int totalCourseDurationHours, int totalCourseDurationMinutes, String courseTags, String targetedAudience) {
         this.status = status;
+        this.title = title;
+        this.price = price;
         this.slug = slug;
         this.aboutCourse = aboutCourse;
         this.maximumStudents = maximumStudents;
@@ -38,8 +40,10 @@ public class Course {
         this.targetedAudience = targetedAudience;
     }
 
-    public Course() {
+    public Course ( String title, String price) {
 
+        this.title = title;
+        this.price = price;
     }
 
     public Long getId() {
