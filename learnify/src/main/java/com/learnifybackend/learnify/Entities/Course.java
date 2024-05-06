@@ -66,10 +66,7 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne // Assuming instructorId is related to an Instructor entity
-    @JoinColumns({
-            @JoinColumn(name = "instructor_id1", referencedColumnName = "id1"),
-            @JoinColumn(name = "instructor_id2", referencedColumnName = "id2")
-    })
+    @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
 
