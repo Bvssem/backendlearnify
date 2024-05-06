@@ -25,13 +25,8 @@ public class Course {
         this.status = status;
         this.title = title;
         this.price = price;
-        this.slug = slug;
-        this.aboutCourse = aboutCourse;
-        this.maximumStudents = maximumStudents;
-        this.difficultyLevel = difficultyLevel;
-        this.isPublicCourse = isPublicCourse;
-        this.enableQA = enableQA;
-        this.categories = categories;
+        // Course Setting
+        // Choose Categories
         this.courseThumbnail = courseThumbnail;
         this.introVideoPath = introVideoPath;
         this.topics = topics;
@@ -76,22 +71,6 @@ public class Course {
     // Course Info
     private String title;
     private String price;
-
-    private String slug;
-
-    private String aboutCourse;
-
-    // Course Setting
-    private int maximumStudents;
-
-    private String difficultyLevel;
-
-    private boolean isPublicCourse;
-
-    private boolean enableQA;
-
-    // Choose Categories
-    private String categories;
 
     // Course Thumbnail
     @Lob
