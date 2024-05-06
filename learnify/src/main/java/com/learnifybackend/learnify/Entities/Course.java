@@ -46,6 +46,10 @@ public class Course {
         this.price = price;
     }
 
+    public Course() {
+
+    }
+
     public Long getId() {
 
         return id;
@@ -112,7 +116,7 @@ public class Course {
 
     private String description;
 
-    private int totalCourseDurationHours;
+    private int totalCourseDurationHours ;
 
     private int totalCourseDurationMinutes;
 
