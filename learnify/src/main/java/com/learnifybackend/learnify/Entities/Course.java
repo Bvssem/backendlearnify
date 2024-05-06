@@ -6,108 +6,53 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+
 @Table(name = "courses")
 public class Course {
 
+
+
+
+
     private String status;
 
+    public Course(String status, String slug, String aboutCourse, int maximumStudents, String difficultyLevel, boolean isPublicCourse, boolean enableQA, String categories, byte[] courseThumbnail, String introVideoPath, List<String> topics, Date startDate, String language, String requirements, String description, int totalCourseDurationHours, int totalCourseDurationMinutes, String courseTags, String targetedAudience) {
+        this.status = status;
+        this.slug = slug;
+        this.aboutCourse = aboutCourse;
+        this.maximumStudents = maximumStudents;
+        this.difficultyLevel = difficultyLevel;
+        this.isPublicCourse = isPublicCourse;
+        this.enableQA = enableQA;
+        this.categories = categories;
+        this.courseThumbnail = courseThumbnail;
+        this.introVideoPath = introVideoPath;
+        this.topics = topics;
+        this.startDate = startDate;
+        this.language = language;
+        this.requirements = requirements;
+        this.description = description;
+        this.totalCourseDurationHours = totalCourseDurationHours;
+        this.totalCourseDurationMinutes = totalCourseDurationMinutes;
+        this.courseTags = courseTags;
+        this.targetedAudience = targetedAudience;
+    }
+
+    public Course() {
+
+    }
+
     public Long getId() {
+
         return id;
     }
-    public String getCourseStatus() {
-        // Implementation logic goes here
-        return "Active"; // Example return value
-    }
 
 
-    public Long getInstructorId() {
-        return instructor.getId();
-    }
 
 
-    public String getTitle() {
-        return title;
-    }
 
-    public String getPrice() {
-        return price;
-    }
 
-    public String getSlug() {
-        return slug;
-    }
 
-    public String getAboutCourse() {
-        return aboutCourse;
-    }
-
-    public int getMaximumStudents() {
-        return maximumStudents;
-    }
-
-    public String getDifficultyLevel() {
-        return difficultyLevel;
-    }
-
-    public boolean isPublicCourse() {
-        return isPublicCourse;
-    }
-
-    public boolean isEnableQA() {
-        return enableQA;
-    }
-
-    public String getCategories() {
-        return categories;
-    }
-
-    public byte[] getCourseThumbnail() {
-        return courseThumbnail;
-    }
-
-    public String getIntroVideoPath() {
-        return introVideoPath;
-    }
-
-    public List<String> getTopics() {
-        return topics;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public String getRequirements() {
-        return requirements;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getTotalCourseDurationHours() {
-        return totalCourseDurationHours;
-    }
-
-    public int getTotalCourseDurationMinutes() {
-        return totalCourseDurationMinutes;
-    }
-
-    public String getCourseTags() {
-        return courseTags;
-    }
-
-    public String getTargetedAudience() {
-        return targetedAudience;
-    }
-
-    public byte[] getCertificateTemplate() {
-        return certificateTemplate;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
