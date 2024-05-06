@@ -11,8 +11,13 @@ import java.util.List;
 public class Course {
 
 
+    public String getStatus() {
+        return status;
+    }
 
-
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     private String status;
 
@@ -30,11 +35,8 @@ public class Course {
         this.courseThumbnail = courseThumbnail;
         this.introVideoPath = introVideoPath;
         this.topics = topics;
-        this.startDate = startDate;
-        this.language = language;
-        this.requirements = requirements;
+        // Additional Information
         this.description = description;
-        this.totalCourseDurationHours = totalCourseDurationHours;
         this.totalCourseDurationMinutes = totalCourseDurationMinutes;
         this.courseTags = courseTags;
         this.targetedAudience = targetedAudience;
@@ -104,16 +106,7 @@ public class Course {
     @CollectionTable(name = "course_topics", joinColumns = @JoinColumn(name = "course_id"))
     private List<String> topics;
 
-    // Additional Information
-    private Date startDate;
-
-    private String language;
-
-    private String requirements;
-
     private String description;
-
-    private int totalCourseDurationHours ;
 
     private int totalCourseDurationMinutes;
 
