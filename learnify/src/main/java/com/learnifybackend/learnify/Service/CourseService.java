@@ -1,9 +1,12 @@
 package com.learnifybackend.learnify.Service;
 
 import com.learnifybackend.learnify.Entities.Course;
+import com.learnifybackend.learnify.Entities.User;
 import com.learnifybackend.learnify.Repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CourseService {
@@ -15,6 +18,24 @@ public class CourseService {
 
         this.courseRepository = courseRepository;
     }
+    public double calculateTotalEarningsByInstructor(User instructor) {
+        return courseRepository.sumOfEarningsByInstructor(instructor.getId());
+    }
+
+    public List<Course> getCoursesByInstructor(Long instructor) {
+        return courseRepository.findByInstructor(instructor);
+    }
+
+    public Course updateCourseStatus(Long courseId, String status) {
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new RuntimeException("Course not found"));
+        course.setStatus(status);
+        return courseRepository.save(course);
+    }
+
+
+
+
 
     // Methods for course-related operations
 
@@ -46,6 +67,7 @@ public class CourseService {
     }
     public int countByInstructorId(Long instructorId) {
         return courseRepository.countByInstructorId(instructorId);
+
     }
 
 

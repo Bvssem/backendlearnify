@@ -8,9 +8,12 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
+
 public class Instructor {
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "instructor_id")
     private Long id;
 
     @NotBlank
@@ -56,6 +59,9 @@ public class Instructor {
     public Instructor() {
 
     }
+
+    public Long getId() {
+    return id;}
 
     // Getters and Setters
 

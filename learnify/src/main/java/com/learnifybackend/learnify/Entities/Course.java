@@ -6,60 +6,115 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-
 @Table(name = "courses")
-
 public class Course {
 
-
-    public Course(String status, String title, String price, String slug, String aboutCourse, int maximumStudents, String difficultyLevel, boolean isPublicCourse, boolean enableQA, String categories, byte[] courseThumbnail, String introVideoPath, List<String> topics, Date startDate, String language, String requirements, String description, int totalCourseDurationHours, int totalCourseDurationMinutes, String courseTags, String targetedAudience, Instructor instructor, byte[] certificateTemplate) {
-        this.title = title;
-        this.price = price;
-        // Course Setting
-        // Choose Categories
-        this.courseThumbnail = courseThumbnail;
-        // Course Intro Video
-        // Store local video path or video URL
-        this.topics = topics;
-        // Additional Information
-        this.instructor = instructor;
-        this.certificateTemplate = certificateTemplate;
+    public String getStatus() {
+        return status;
     }
 
-    public Course (Instructor instructor, String title, String price, byte[] certificateTemplate) {
-        this.instructor = instructor;
-
-        this.title = title;
-        this.price = price;
-        this.certificateTemplate = certificateTemplate;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public Course(Instructor instructor, byte[] certificateTemplate) {
-
-        this.instructor = instructor;
-        this.certificateTemplate = certificateTemplate;
-    }
-
-    public Course(byte[] certificateTemplate) {
-
-        this.certificateTemplate = certificateTemplate;
-    }
-
-    public Course() {
-
-    }
+    private String status;
 
     public Long getId() {
 
         return id;
     }
+    public String getCourseStatus() {
+
+        return "Active"; //
+    }
 
 
 
 
 
+    public String getTitle() {
+        return title;
+    }
 
+    public String getPrice() {
+        return price;
+    }
 
+    public String getSlug() {
+        return slug;
+    }
+
+    public String getAboutCourse() {
+        return aboutCourse;
+    }
+
+    public int getMaximumStudents() {
+        return maximumStudents;
+    }
+
+    public String getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public boolean isPublicCourse() {
+        return isPublicCourse;
+    }
+
+    public boolean isEnableQA() {
+        return enableQA;
+    }
+
+    public String getCategories() {
+        return categories;
+    }
+
+    public byte[] getCourseThumbnail() {
+        return courseThumbnail;
+    }
+
+    public String getIntroVideoPath() {
+        return introVideoPath;
+    }
+
+    public List<String> getTopics() {
+        return topics;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getTotalCourseDurationHours() {
+        return totalCourseDurationHours;
+    }
+
+    public int getTotalCourseDurationMinutes() {
+        return totalCourseDurationMinutes;
+    }
+
+    public String getCourseTags() {
+        return courseTags;
+    }
+
+    public String getTargetedAudience() {
+        return targetedAudience;
+    }
+
+    public byte[] getCertificateTemplate() {
+        return certificateTemplate;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,26 +123,68 @@ public class Course {
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
+    public Long getInstructorId() {
+        return instructor != null ? instructor.getId() : null;
+    }
+
 
 
     // Course Info
     private String title;
     private String price;
 
+    private String slug;
+
+    private String aboutCourse;
+
+    // Course Setting
+    private int maximumStudents;
+
+    private String difficultyLevel;
+
+    private boolean isPublicCourse;
+
+    private boolean enableQA;
+
+    // Choose Categories
+    private String categories;
+
     // Course Thumbnail
     @Lob
     @Column(name = "course_thumbnail")
     private byte[] courseThumbnail;
+
+    // Course Intro Video
+    private String introVideoPath; // Store local video path or video URL
 
     // Course Builder - Topic
     @ElementCollection
     @CollectionTable(name = "course_topics", joinColumns = @JoinColumn(name = "course_id"))
     private List<String> topics;
 
+    // Additional Information
+    private Date startDate;
+
+    private String language;
+
+    private String requirements;
+
+    private String description;
+
+    private int totalCourseDurationHours;
+
+    private int totalCourseDurationMinutes;
+
+    private String courseTags;
+
+    private String targetedAudience;
+
     // Certificate Template
     @Lob
     @Column(name = "certificate_template")
     private byte[] certificateTemplate;
+
+
 
 
     // Getters and setters
