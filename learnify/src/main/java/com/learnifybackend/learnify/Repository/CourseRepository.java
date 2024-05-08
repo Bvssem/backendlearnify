@@ -14,20 +14,20 @@ import java.util.List;
 
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
-    List<Course> findByInstructorId(Long instructor);
+  // public Course findById(Long instructor);
 
 
-    int countByInstructorIdAndStatus(Long instructorId, String status);
+    int countByInstructor_IdAndStatus(Long instructorId, String status);
 
-    @Query("SELECT COUNT(DISTINCT c.enrolledStudents) FROM Course c WHERE c.instructor.id = :instructorId")
+    /*/@Query("SELECT COUNT(DISTINCT c.enrolledStudents) FROM Course c WHERE c.instructor.id = :instructorId")
     int countDistinctEnrolledStudentsByInstructorId(@Param("instructorId") Long id);
 
     @Query("SELECT SUM(c.price) FROM Course c WHERE c.instructor = :instructor")
     double sumOfEarningsByInstructor(Long instructor);
+/*/
 
 
-
-    @Service
+   /* @Service
     public class CourseService {
         @Autowired
         private CourseRepository courseRepository;
@@ -41,11 +41,10 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
             return sum;
         }
     }
+*/
+    //List<Course> findByInstructor(Long instructor);
 
-    List<Course> findByInstructor(Long instructor);
 
-
-    int countByInstructorId(long instructorId);
 
 
 

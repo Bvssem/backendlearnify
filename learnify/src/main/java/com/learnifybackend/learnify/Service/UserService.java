@@ -34,4 +34,5 @@ public class UserService implements UserDetailsService {
         Optional<User> optionalUser = userRepository.findById(id);
         return optionalUser.orElse(null);
     }
+
 }

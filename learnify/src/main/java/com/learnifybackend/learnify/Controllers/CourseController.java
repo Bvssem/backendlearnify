@@ -9,18 +9,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-import static com.learnifybackend.learnify.Service.UserService.userRepository;
+
+
 
 @RestController
-@RequestMapping("/courses")
+@RequestMapping({"/courses"})
 public class CourseController {
 
-    private final CourseService courseService;
+    @Autowired
+    private CourseService courseService;
 
     @Autowired
+    private UserService userService;
+
+   /* @Autowired
     public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
+
+    */
 
     @PostMapping
     public Course createCourse(@RequestBody Course course) {
@@ -40,10 +47,11 @@ public class CourseController {
     @GetMapping("/instructor/{instructorId}")
     public List<Course> getCoursesByInstructor(@PathVariable Long instructorId) {
         // Assuming you have a method in CourseService to get courses by instructor
-        return courseService.getCoursesByInstructor(instructorId);
+       // return courseService.getCoursesByInstructor(instructorId);
+        return null;
     }
 
-    @GetMapping("/earnings/{instructorId}")
+    /*@GetMapping("/earnings/{instructorId}")
     public double getTotalEarningsByInstructor(@PathVariable Long instructorId) {
         // Assuming you have a method in CourseService to fetch user details by ID
         User instructor = UserService.getUserById(instructorId);
@@ -51,11 +59,17 @@ public class CourseController {
             throw new RuntimeException("Instructor not found");
         }
         return courseService.calculateTotalEarningsByInstructor(instructor);
-    }
+    }*/
+    /*
     public User getUserById(Long id) {
+
         Optional<User> optionalUser = userRepository.findById(id);
         return optionalUser.orElse(null);
-    }
+    }*/
+
+    private Long instructorId   ;
+    //User instructor = userService.getUserById(instructorId);
+
 
 
     // Additional endpoints for course-related operations

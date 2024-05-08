@@ -23,8 +23,8 @@ public class InstructorDashboardService {
 
     public DashboardData getDashboardData(User user) {
         int enrolledCourses = courseRepository.countByInstructorId(user.getId());
-        int activeCourses = courseRepository.countByInstructorIdAndStatus(user.getId(), "ACTIVE");
-        int completedCourses = courseRepository.countByInstructorIdAndStatus(user.getId(), "COMPLETED");
+        int activeCourses = courseRepository.countByInstructor_IdAndStatus(user.getId(), "ACTIVE");
+        int completedCourses = courseRepository.countByInstructor_IdAndStatus(user.getId(), "COMPLETED");
         int totalStudents = courseRepository.countDistinctEnrolledStudentsByInstructorId(user.getId());
         int totalCourses = courseRepository.countByInstructorId(user.getId());
         double totalEarnings = courseRepository.calculateSumOfEarningsByInstructor(user.getId());
